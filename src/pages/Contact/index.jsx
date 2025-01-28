@@ -61,23 +61,38 @@ export default function ContactUs() {
               <Form className="space-y-4">
                 <div>
                   <label className="block text-xs font-medium">Nom complet</label>
-                  <Field type="text" name="name" className="w-full p-3 border rounded-md text-sm" />
-                  <ErrorMessage name="name" component="p" className="text-error text-xs" />
+                  <Field
+  type="text"
+  name="name"
+  className="w-full p-3 border rounded-md text-sm focus:border-[#3B6790] focus:ring-0 outline-none"
+/>                  <ErrorMessage name="name" component="p" className="text-error text-xs" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium">Adresse email</label>
-                  <Field type="email" name="email" className="w-full p-3 border rounded-md text-sm" />
-                  <ErrorMessage name="email" component="p" className="text-error text-xs" />
+                  <Field
+  type="email"
+  name="email"
+  className="w-full p-3 border rounded-md text-sm focus:border-[#3B6790] focus:ring-0 outline-none"
+/>
+
+                 
+<ErrorMessage name="email" component="p" className="text-error text-xs" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium">Sujet</label>
-                  <Field type="text" name="subject" className="w-full p-3 border rounded-md text-sm" />
-                  <ErrorMessage name="subject" component="p" className="text-error text-xs" />
+                  <Field  type="text"  name="subject"  className="w-full p-3 border rounded-md text-sm focus:border-[#3B6790] focus:ring-0 outline-none"
+/>
+              <ErrorMessage name="subject" component="p" className="text-error text-xs" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium">Message</label>
-                  <Field as="textarea" name="message" className="w-full p-3 border rounded-md text-sm" rows="4" />
-                  <ErrorMessage name="message" component="p" className="text-error text-xs" />
+                  <Field
+  as="textarea"
+  name="message"
+  className="w-full p-3 border rounded-md text-sm focus:border-[#3B6790] focus:ring-0 outline-none"
+  rows="4"
+/>
+                 <ErrorMessage name="message" component="p" className="text-error text-xs" />
                 </div>
                 <motion.button 
                   type="submit" 
