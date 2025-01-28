@@ -7,11 +7,12 @@ module.exports = {
     extend: {
       darkMode: 'class',
       colors: {
-        primary: "#EFB036",
-        secondary: "#3B6790",
-        accent: "#23486A",
-        dark: "#2D3436",
-        light: "#4C7B8B",
+        primary: "#EFB036", // Orange
+        secondary: "#3B6790", // Navy
+        accent: "#23486A", // Darker Navy
+        muted: "#4C7B8B", // Soft Blue
+        dark: "#2D3436", // Dark Gray
+        light: "#F5F5F5", // Light Gray
         success: "#55EFC4",
         warning: "#FDCB6E",
         error: "#FF7675",
@@ -25,12 +26,15 @@ module.exports = {
       },
       borderRadius: {
         'xl': '1rem',
+        '2xl': '1.5rem',
       },
       spacing: {
         '72': '18rem',
         '84': '21rem',
         '96': '24rem',
+        '128': '32rem',
       },
     },
   },
+  plugins: [],
 };
