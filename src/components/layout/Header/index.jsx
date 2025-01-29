@@ -25,8 +25,8 @@ const Header = () => {
     <header className="fixed w-full bg-transparent backdrop-blur-sm shadow-md z-50">
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Logo animé */}
-        <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
-          <Link to="/" className="text-2xl font-bold text-accent">
+        <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.2 }}>
+          <Link to="/" className="text-2xl font-bold text-primary">
             BestGram
           </Link>
         </motion.div>
@@ -89,7 +89,7 @@ const Header = () => {
         {isMenuOpen && (
           <motion.div
             ref={menuRef}
-            className="md:hidden bg-dark/95 backdrop-blur-md p-4 absolute top-full left-0 w-full shadow-lg"
+            className="md:hidden bg-transparent backdrop-blur-md p-4 absolute top-full left-0 w-full shadow-lg"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -104,7 +104,7 @@ const Header = () => {
                 >
                   <Link
                     to={`/${item.toLowerCase()}`}
-                    className="text-light hover:text-accent transition-colors"
+                    className="text-primary hover:text-accent transition-colors"
                     onClick={toggleMenu}
                   >
                     {item}

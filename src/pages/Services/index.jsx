@@ -18,7 +18,7 @@ const services = [
   },
   {
     id: 2,
-    icon: <FaHeart className="text-secondary text-4xl" />,
+    icon: '/icons/comme.png',
     label: "Smart Likes",
     description: "Natural engagement with real accounts.",
     features: ["Post-specific targeting", "Analytics included"],
@@ -27,7 +27,7 @@ const services = [
   },
   {
     id: 3,
-    icon: <FaComments className="text-primary text-4xl" />,
+    icon:  '/icons/chat.png',
     label: "Engaged Comments",
     description: "Customizable messages and emoji integration.",
     features: ["Spam filtering", "Multiple languages"],
@@ -36,7 +36,7 @@ const services = [
   },
   {
     id: 4,
-    icon: <FaEye className="text-warning text-4xl" />,
+    icon:  '/icons/voir.png',
     label: "Story Views",
     description: "Organic-looking views with geotargeting.",
     features: ["Gradual increase", "Detailed analytics"],
@@ -45,7 +45,7 @@ const services = [
   },
   {
     id: 5,
-    icon: <FaRobot className="text-success text-4xl" />,
+    icon:  '/icons/assistant-ia.png',
     label: "AI Content Suite",
     description: "Post generation and hashtag optimization.",
     features: ["Caption writing", "Analytics dashboard"],
@@ -54,7 +54,7 @@ const services = [
   },
   {
     id: 6,
-    icon: <FaStar className="text-error text-4xl" />,
+    icon:  '/icons/influencer.png',
     label: "Influencer Package",
     description: "All-in-one growth with VIP support.",
     features: ["Competitor analysis", "Daily reports"],

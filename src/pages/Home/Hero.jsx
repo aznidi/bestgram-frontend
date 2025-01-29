@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaArrowRight, FaRocket, FaHeart } from 'react-icons/fa';
+import { FaArrowRight, FaRocket } from 'react-icons/fa';
 import dashboard from '../../assets/images/dashboard.png';
 
 function Hero() {
   return (
-    <section className="min-h-screen flex flex-col lg:flex-row items-center justify-center lg:justify-between mt-8 px-6 lg:px-16">
+    <section className="min-h-screen flex flex-col items-center justify-center px-6 lg:flex-row lg:justify-between lg:px-16 space-y-8 lg:space-y-0">
       
       {/* Text Section */}
       <motion.div
@@ -15,28 +15,30 @@ function Hero() {
         className="text-center lg:text-left lg:w-1/2 space-y-6"
       >
         <motion.h1
-          className="text-4xl lg:text-6xl font-extrabold text-primary tracking-wide leading-tight"
+          className="text-3xl lg:text-5xl font-bold text-primary tracking-tight leading-snug"
         >
           <FaRocket className="inline-block text-yellow-500 mr-2" />
           Boost Your Social Media Presence
         </motion.h1>
         
-        <p className="text-lg lg:text-xl text-secondary leading-relaxed">
+        <p className="text-base lg:text-lg text-secondary leading-relaxed">
           With BestGram, skyrocket your influence with likes, followers, and engagement like never before! 🚀
         </p>
 
-        <motion.button
-          whileHover={{ x: 2 }}
-          className="bg-primary text-white px-6 py-3 rounded-2xl shadow-custom flex items-center gap-2 hover:bg-accent"
-        >
-          Explore Now
-          <motion.div whileHover={{ x: 2 }}>
-            <FaArrowRight size={24} />
-          </motion.div>
-        </motion.button>
+        <motion.div className="flex justify-center lg:justify-start">
+          <motion.button
+            whileHover={{ x: 2 }}
+            className="bg-primary text-white px-5 py-3 rounded-2xl shadow-custom flex items-center gap-2 hover:bg-accent"
+          >
+            Explore Now
+            <motion.div whileHover={{ x: 2 }}>
+              <FaArrowRight size={20} />
+            </motion.div>
+          </motion.button>
+        </motion.div>
       </motion.div>
 
-      {/* Image Section */}
+      {/* Image Section (Hidden on Mobile) */}
       <motion.div
         initial={{ x: 50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}

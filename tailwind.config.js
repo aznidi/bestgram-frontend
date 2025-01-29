@@ -7,12 +7,12 @@ module.exports = {
     extend: {
       darkMode: 'class',
       colors: {
-        primary: "#C957BC", // Orange
-        secondary: "#FFC872", // Navy
-        accent: "#FFE3B3", // Darker Navy
-        muted: "#E6CFA0", // Soft Blue
-        dark: "#2D3436", // Dark Gray
-        light: "#F5F5F5", // Light Gray
+        primary: "#C957BC", // Purple from your palette
+        secondary: "#FFC872", // Light Orange from your palette
+        accent: "#FFE3B3", // Pale Yellow from your palette
+        muted: "#E6CFA0", // Soft complementary beige tone
+        dark: "#2D3436", // Dark Gray for contrast
+        light: "#F5F5F5", // Light Gray for background
         success: "#55EFC4",
         warning: "#FDCB6E",
         error: "#FF7675",
