@@ -41,7 +41,7 @@ const Header = () => {
             >
               <Link
                 to={`/${item.toLowerCase()}`}
-                className="relative text-accent hover:text-muted transition-colors"
+                className="relative text-primary hover:text-secondary transition-colors"
               >
                 {item}
                 <motion.div
