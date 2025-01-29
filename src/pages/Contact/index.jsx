@@ -45,7 +45,6 @@ export default function ContactUs() {
             </motion.button>
           </div>
 
-<<<<<<< HEAD
           <div className="p-6 flex flex-col space-y-4">
             <h2 className="text-lg font-bold mb-4 text-primary">Send Us a Message</h2>
             <Formik
@@ -106,67 +105,6 @@ export default function ContactUs() {
             </Formik>
           </div>
         </motion.div>
-=======
-        <div className="p-6 flex flex-col space-y-4">
-          <h2 className="text-lg font-bold mb-4">Envoyez-nous un message</h2>
-          <Formik
-            initialValues={initialValues}
-            validate={validate}
-            onSubmit={handleSubmit}
-          >
-            
-            {({ isSubmitting }) => (
-              <Form className="space-y-4">
-                <div>
-                  <label className="block text-xs font-medium">Nom complet</label>
-                  <Field
-  type="text"
-  name="name"
-  className="w-full p-3 border rounded-md text-sm focus:border-[#3B6790] focus:ring-0 outline-none"
-/>                  <ErrorMessage name="name" component="p" className="text-error text-xs" />
-                </div>
-                <div>
-                  <label className="block text-xs font-medium">Adresse email</label>
-                  <Field
-  type="email"
-  name="email"
-  className="w-full p-3 border rounded-md text-sm focus:border-[#3B6790] focus:ring-0 outline-none"
-/>
-
-                 
-<ErrorMessage name="email" component="p" className="text-error text-xs" />
-                </div>
-                <div>
-                  <label className="block text-xs font-medium">Sujet</label>
-                  <Field  type="text"  name="subject"  className="w-full p-3 border rounded-md text-sm focus:border-[#3B6790] focus:ring-0 outline-none"
-/>
-              <ErrorMessage name="subject" component="p" className="text-error text-xs" />
-                </div>
-                <div>
-                  <label className="block text-xs font-medium">Message</label>
-                  <Field
-  as="textarea"
-  name="message"
-  className="w-full p-3 border rounded-md text-sm focus:border-[#3B6790] focus:ring-0 outline-none"
-  rows="4"
-/>
-                 <ErrorMessage name="message" component="p" className="text-error text-xs" />
-                </div>
-                <motion.button 
-                  type="submit" 
-                  className="w-full bg-primary text-white p-3 rounded-md text-sm"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Envoi..." : "Envoyer"}
-                </motion.button>
-              </Form>
-            )}
-          </Formik>
-        </div>
-      </motion.div>
->>>>>>> e9782c69409ac2499e269a7faf7ced800a9bb4d1
 
         <Toaster />
       </div>
