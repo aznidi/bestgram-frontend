@@ -7,10 +7,10 @@ module.exports = {
     extend: {
       darkMode: 'class',
       colors: {
-        primary: "#EFB036", // Orange
-        secondary: "#3B6790", // Navy
-        accent: "#23486A", // Darker Navy
-        muted: "#4C7B8B", // Soft Blue
+        primary: "#752092", // Orange
+        secondary: "#C957BC", // Navy
+        accent: "#FFC872", // Darker Navy
+        muted: "#FFE3B3", // Soft Blue
         dark: "#2D3436", // Dark Gray
         light: "#F5F5F5", // Light Gray
         success: "#55EFC4",
