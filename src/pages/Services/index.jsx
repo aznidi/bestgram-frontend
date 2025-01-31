@@ -1,11 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaUsers, FaHeart, FaComments, FaEye, FaRobot, FaStar } from "react-icons/fa";
 import Card from "../../components/ui/Card";
 
-//Importer les icons src/assets/icons
-
-
+// Sample service data
 const services = [
   {
     id: 1,
@@ -27,7 +24,7 @@ const services = [
   },
   {
     id: 3,
-    icon:  '/icons/chat.png',
+    icon: '/icons/chat.png',
     label: "Engaged Comments",
     description: "Customizable messages and emoji integration.",
     features: ["Spam filtering", "Multiple languages"],
@@ -36,7 +33,7 @@ const services = [
   },
   {
     id: 4,
-    icon:  '/icons/voir.png',
+    icon: '/icons/voir.png',
     label: "Story Views",
     description: "Organic-looking views with geotargeting.",
     features: ["Gradual increase", "Detailed analytics"],
@@ -45,7 +42,7 @@ const services = [
   },
   {
     id: 5,
-    icon:  '/icons/assistant-ia.png',
+    icon: '/icons/assistant-ia.png',
     label: "AI Content Suite",
     description: "Post generation and hashtag optimization.",
     features: ["Caption writing", "Analytics dashboard"],
@@ -54,7 +51,7 @@ const services = [
   },
   {
     id: 6,
-    icon:  '/icons/influencer.png',
+    icon: '/icons/influencer.png',
     label: "Influencer Package",
     description: "All-in-one growth with VIP support.",
     features: ["Competitor analysis", "Daily reports"],
@@ -65,7 +62,7 @@ const services = [
 
 const Services = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center py-16 px-6">
+    <div className="min-h-screen flex flex-col items-center py-16 px-6 bg-gray-100">
       <motion.h3
         className="text-center text-primary mt-16 font-extrabold text-4xl lg:text-5xl md:text-6xl mb-12"
         initial={{ opacity: 0, y: -30 }}
@@ -75,9 +72,17 @@ const Services = () => {
         Our Services
       </motion.h3>
 
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {services.map((service) => (
-          <Card service={service} />
+          <motion.div
+            key={service.id}
+            className="flex justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 * service.id, duration: 0.5 }}
+          >
+            <Card service={service} />
+          </motion.div>
         ))}
       </div>
     </div>
