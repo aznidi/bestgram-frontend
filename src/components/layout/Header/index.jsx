@@ -60,7 +60,7 @@ const Header = () => {
               transition={{ type: "spring", stiffness: 200 }}>
             <Link
               to="/login"
-              className="flex items-center underline text-dark px-4 py-2 rounded-lg hover:bg-accent-dark transition-colors"
+              className="flex items-center text-primary px-4 py-2 rounded-lg hover:bg-accent-dark transition-colors"
             >
               Login
             </Link>
@@ -69,7 +69,7 @@ const Header = () => {
               transition={{ type: "spring", stiffness: 200 }}>
             <Link
               to="/register"
-              className="flex items-center bg-primary text-dark px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors"
+              className="flex items-center bg-primary text-light px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors"
             >
               Register
             </Link>

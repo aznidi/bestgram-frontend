@@ -22,14 +22,14 @@ export default function ContactUs() {
     };
 
     return (
-      <div className="flex justify-center items-center min-h-screen p-4 pt-[80px]">
+      <div className="flex justify-center items-center min-h-screen pt-[80px] ">
         <motion.div 
-          className="bg-transparent shadow- rounded-lg grid md:grid-cols-2 w-full max-w-7xl p-6 gap-6"
+          className="bg-transparent rounded-md shadow-md grid md:grid-cols-2 w-full  max-w-7xl p- gap-6"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="bg-accent text-white p-6 rounded-lg flex flex-col justify-center text-center space-y-4">
+          <div className="bg-accent text-white p-4 flex rounded-t-md flex-col justify-center text-center space-y-4">
             <h2 className="text-lg font-bold mb-2">Connect with Us</h2>
             <p className="text-sm mb-4">Follow us on our social networks or contact us directly.</p>
             <div className="flex justify-center gap-4 text-xl">
@@ -45,7 +45,7 @@ export default function ContactUs() {
             </motion.button>
           </div>
 
-          <div className="p-6 flex flex-col space-y-4">
+          <div className="p-4 flex flex-col space-y-4">
             <h2 className="text-lg font-bold mb-4 text-primary">Send Us a Message</h2>
             <Formik
               initialValues={initialValues}
@@ -98,7 +98,7 @@ export default function ContactUs() {
                     whileTap={{ scale: 0.95 }}
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Sending..." : "Send"}
+                    {isSubmitting ? "Sending..." : "Send."}
                   </motion.button>
                 </Form>
               )}

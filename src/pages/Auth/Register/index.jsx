@@ -1,109 +1,172 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import image from "../../../assets/images/social.jpg";
-import { toast } from "react-hot-toast";
-
-const validationSchema = Yup.object({
-  name: Yup.string().required("Full name is required"),
-  email: Yup.string().email("Invalid email address").required("Email is required"),
-  password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
+// src/components/Register.js
+import React, { useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { User, EyeClosed, EyeIcon} from 'lucide-react'
+import { Button } from '@headlessui/react';
+import toast, { Toaster } from 'react-hot-toast';
+import { motion } from 'framer-motion';
+const RegisterSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email').required('This field is required'),
+  password: Yup.string().min(6, 'Must be at least 6 characters long').required('This field is required'),
+  password_confirm: Yup.string()
+    .min(6, 'Must be at least 6 characters long')
+    .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    .required('This field is required')
 });
 
-const Register = () => {
+
+function Register() {
+  
+
+  const [isShowed, setIsShowed] = useState(false);
+  const [isShowedConfirm, setIsShowedConfirm] = useState(false);
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+      password_confirm: ''
+    },
+    validationSchema: RegisterSchema,
+    onSubmit: (values) => {
+      console.log(values);
+      formik.resetForm();
+      toast.success("Register succeded", {className: 'bg-primary mt-10'});
+
+      
+    }
+  });
+
+  const toogleIsShowed = () => {
+    setIsShowed(!isShowed);
+  }
+
+  const toogleIsShowedConfirm = () => {
+    setIsShowed(!isShowedConfirm);
+  }
+
+  const handleGoogleSignIn = () => {
+    //
+  };
+
   return (
-    <div className="flex justify-center items-center min-h-screen from-indigo-100 to-blue-200 p-6">
-      <motion.div 
-        initial={{ opacity: 0, y: -20 }} 
-        animate={{ opacity: 1, y: 0 }} 
+    <div className="flex items-center justify-center min-h-screen">
+      <motion.div
+        className="p-5 lg:p-8 max-w-sm lg:max-w-md w-full bg-transparent shadow-custom rounded-md"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex bg-white shadow-xl rounded-3xl overflow-hidden max-w-4xl w-full"
       >
-        <div className="w-1/2 p-8 flex flex-col justify-center">
-          <h2 className="text-3xl font-bold text-primary text-center mb-6 font-montserrat">
-            Client Registration
-          </h2>
-          <Formik
-            initialValues={{ name: "", email: "", password: "" }}
-            validationSchema={validationSchema}
-            onSubmit={(values, { setSubmitting }) => {
-              toast.success("Registration successful!");
-              console.log(values);
-              setSubmitting(false);
-            }}
+        <h2 className="text-2xl font-bold text-primary mb-6 text-center">Register</h2>
+        <form onSubmit={formik.handleSubmit}>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-gray-700 font-extralight mb-2">Email</label>
+            <div className="relative">
+              <User className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                value={formik.values.email} 
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary ${formik.touched.email && formik.errors.email ? 'border-red-500' : ''}`} 
+                placeholder="Enter your email"
+              />
+            </div>
+            {formik.touched.email && formik.errors.email ? (
+              <p className="text-red-500 text-xs mt-1">{formik.errors.email}</p>
+            ) : null}
+          </div>
+          
+          <motion.div
+            className="mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
           >
-            {({ isSubmitting, handleChange, values }) => (
-              <Form className="space-y-5">
-                <div>
-                  <label htmlFor="name" className="text-gray-700 font-sans block mb-1">
-                    Full Name
-                  </label>
-                  <Field 
-                    id="name" 
-                    name="name"
-                    type="text" 
-                    value={values.name}
-                    onChange={handleChange}
-                    className="w-full border border-gray-400 p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 shadow-sm"
-                  />
-                  <ErrorMessage name="name" component="div" className="text-red-500 text-sm mt-1" />
-                </div>
-                <div>
-                  <label htmlFor="email" className="text-gray-700 font-sans block mb-1">
-                    Email
-                  </label>
-                  <Field 
-                    id="email" 
-                    name="email"
-                    type="email" 
-                    value={values.email}
-                    onChange={handleChange}
-                    className="w-full border border-gray-400 p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 shadow-sm"
-                  />
-                  <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
-                </div>
-                <div>
-                  <label htmlFor="password" className="text-gray-700 font-sans block mb-1">
-                    Password
-                  </label>
-                  <Field 
-                    id="password" 
-                    name="password"
-                    type="password" 
-                    value={values.password}
-                    onChange={handleChange}
-                    className="w-full border border-gray-400 p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 shadow-sm"
-                  />
-                  <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
-                </div>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-yellow-500 transition"
-                
-                >
-                  Register
-                </motion.button>
-              </Form>
-            )}
-          </Formik>
+            <label htmlFor="password" className="block text-gray-700 font-extralight mb-2">Password</label>
+            <div className="relative">
+              {
+                isShowed ? <EyeIcon onClick={toogleIsShowed} className="w-5 h-5 cursor-pointer absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" /> 
+                : <EyeClosed onClick={toogleIsShowed} className="w-5 h-5 cursor-pointer absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              }
+              <input 
+                type={isShowed ? "text" : "password"}
+                id="password" 
+                name="password" 
+                value={formik.values.password} 
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary ${formik.touched.password && formik.errors.password ? 'border-red-500' : ''}`} 
+                placeholder="Enter your password"
+              />
+            </div>
+            {formik.touched.password && formik.errors.password ? (
+              <p className="text-red-500 text-xs mt-1">{formik.errors.password}</p>
+            ) : null}
+          </motion.div>
+  
+          <motion.div
+            className="mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+            <label htmlFor="password_confirm" className="block text-gray-700 font-extralight mb-2">Confirm password</label>
+            <div className="relative">
+              {
+                isShowedConfirm ? <EyeIcon onClick={toogleIsShowedConfirm} className="w-5 h-5 cursor-pointer absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" /> 
+                : <EyeClosed onClick={toogleIsShowedConfirm} className="w-5 h-5 cursor-pointer absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              }
+              <input 
+                type={isShowedConfirm ? "text" : "password"}
+                id="password_confirm" 
+                name="password_confirm" 
+                value={formik.values.password_confirm} 
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary ${formik.touched.password_confirm && formik.errors.password_confirm ? 'border-red-500' : ''}`} 
+                placeholder="Repeat your password"
+              />
+            </div>
+            {formik.touched.password_confirm && formik.errors.password_confirm ? (
+              <p className="text-red-500 text-xs mt-1">{formik.errors.password_confirm}</p>
+            ) : null}
+          </motion.div>
+  
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
+            <Button type='submit' className="inline-flex w-full justify-center items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
+              Register
+            </Button>
+          </motion.div>
+        </form>
+  
+        <div className="flex items-center mt-6 text-center">
+          <hr className="flex-grow border-t border-gray-300" />
+          <span className="px-4 text-gray-500">Or</span>
+          <hr className="flex-grow border-t border-gray-300" />
         </div>
-        <div className="w-1/2 flex justify-center p-6">
-          <motion.img 
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5 }}
-            src={image} 
-            alt="Social Media Illustration" 
-            className="rounded-lg w-85 " 
-          />
-        </div>
+  
+        <motion.div
+          className="mt-4 flex space-x-4 justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+        >
+          <Button className="inline-flex w-full justify-center items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-extralight text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
+            <img src="/icons/google.png" alt="Google Logo" className="h-5 w-5" />
+            <span>Continue with Google</span>
+          </Button>
+        </motion.div>
       </motion.div>
+      <Toaster toastOptions={{className: 'mt-10'}} />
     </div>
   );
-};
+}
 
 export default Register;
